@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr Oetker — Multi-Brand Design System | Marc Bonas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../index.html" class="logo">Marc Bonas <span class="logo-accent">Portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#recent-work">Recent Work</a></li>
+      <li><a href="../about.html">About me / Skills</a></li>
+      <li><a href="../work-reference.html">Work Reference</a></li>
+      <li><a href="mailto:hey@mrkus.berlin">Get in Touch</a></li>
+    </ul>
+    <a href="../cv.html" class="btn-nav">Experience</a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO: full-bleed image, text overlaid -->
+  <section class="cs-hero">
+    <img class="cs-hero-bg" src="../assets/case-studies/design-system/hero.png" alt="Dr Oetker multi-brand design system mockup">
+    <div class="cs-hero-content accent-oetker">
+      <img class="cs-hero-logo-img" src="../assets/case-studies/design-system/logo.png" alt="Dr Oetker">
+      <div class="cs-hero-divider"></div>
+      <span class="cs-hero-subtitle">Multi-Brand Design System</span>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="cs-meta">
+    <div class="cs-recap">
+      <h2 class="cs-recap-title">Dr Oetker</h2>
+      <p class="cs-recap-subtitle">group wide multi-brand design system</p>
+    </div>
+    <div class="cs-meta-inner fade-up">
+      <div class="cs-meta-main">
+        <div>
+          <span class="meta-label">Story</span>
+          <p>With the multi-brand design system, we unified a diverse brand portfolio under a single cohesive framework — anchored in the master brand, flexible enough for sub-brands, and scalable enough for one central team to manage it all.</p>
+        </div>
+        <div class="cs-meta-row cs-challenge">
+          <div>
+            <h4>Challenge</h4>
+            <p>How do you build a single design system that serves 6+ distinct brands without losing what makes each one unique — and that a small central team can actually maintain and scale?</p>
+          </div>
+          <div>
+            <h4>Outcome</h4>
+            <p>A scalable design system that ensures brand consistency and streamlines design processes across all Dr. Oetker brands.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cs-meta-side">
+        <div class="cs-meta-block">
+          <span class="meta-label">Team</span>
+          <p class="meta-val">2 FE Engineers<br>2 Product Designers</p>
+        </div>
+        <div class="cs-meta-block">
+          <span class="meta-label">My Stake</span>
+          <p class="meta-val">User Research | User Experience | User Interface</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JUMP NAV -->
+  <nav class="cs-jump">
+    <span class="cs-jump-label">Jump to</span>
+    <div class="cs-jump-links">
+      <a href="#process">→ Process</a>
+      <a href="#product">→ Product</a>
+      <a href="#impact">→ Impact</a>
+    </div>
+  </nav>
+
+  <!-- PROCESS -->
+  <section class="cs-section" id="process">
+    <div class="cs-section-inner">
+      <h2>Process</h2>
+
+      <div class="cs-feature">
+        <div class="cs-role fade-up">
+          <h3 class="cs-role-title">Systematic Audit</h3>
+          <div class="cs-role-text">
+            <p>Before touching Figma, we audited every brand's existing product component by component — mapping shared patterns, identifying meaningful differences, and defining where standardisation made sense versus where flexibility was non-negotiable.</p>
+            <p>The audit revealed that the majority of components could be shared across brands — which allowed us to focus differentiation effort on what truly mattered: colour, typography, and a handful of brand-specific elements like hero imagery and iconography. This decision shaped the entire architecture of the system and laid the foundation for a scalable multi-brand design system.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-feature">
+        <div class="cs-role fade-up">
+          <h3 class="cs-role-title">Figma Enterprise<br>+ FE Devs.</h3>
+          <div class="cs-role-text">
+            <p>We built the entire system in Figma Enterprise, working in close collaboration with frontend developers to ensure every component, token, and naming convention translated directly into code. The challenge wasn't just design — it was making sure both sides spoke the same language.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="cs-section" id="product">
+    <div class="cs-section-inner">
+      <h2>Product</h2>
+    </div>
+  </section>
+
+  <div class="cs-showcase big-mockups">
+    <div class="cs-showcase-text fade-up shift-up">
+      <h3>The Variables</h3>
+      <p>Every brand-specific detail — colours, typography, radius, spacing, shadows — lives in variables. Change the variables, change the brand. The components take care of the rest.</p>
+    </div>
+    <div class="cs-showcase-media">
+      <img class="fade-up big-img" src="../assets/case-studies/design-system/tokens.png" alt="Dr Oetker design system tokens and variables">
+    </div>
+  </div>
+
+  <div class="cs-showcase big-mockups media-left">
+    <div class="cs-showcase-text fade-up shift-up-more">
+      <h3>The Components</h3>
+      <p>Every component is built on unbranded tokens and designed with auto-layout, so it adapts perfectly regardless of brand. Font sizes, CTA padding, spacing — everything flexes automatically when brand variables are applied.</p>
+    </div>
+    <div class="cs-showcase-media">
+      <img class="fade-up big-img-2" src="../assets/case-studies/design-system/components.png" alt="Dr Oetker design system components">
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <section class="cs-impact" id="impact">
+    <div class="cs-impact-inner">
+      <h2>Impact</h2>
+      <div class="impact-grid">
+        <div class="impact-card fade-up">
+          <p class="impact-val">5</p>
+          <p class="impact-label">Brands Unified</p>
+          <p class="impact-sub">One shared framework</p>
+        </div>
+        <div class="impact-card fade-up">
+          <p class="impact-val">1 Team</p>
+          <p class="impact-label">Central Team</p>
+          <p class="impact-sub">Manages all 6+ brands from one place</p>
+        </div>
+        <div class="impact-card fade-up">
+          <p class="impact-val">✓</p>
+          <p class="impact-label">Design Consistency</p>
+          <p class="impact-sub">Unified visual language across 5 brands</p>
+        </div>
+        <div class="impact-card fade-up">
+          <p class="impact-val">100k+ €</p>
+          <p class="impact-label">Saved Annually</p>
+          <p class="impact-sub">Agency spend eliminated</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER PROJECTS -->
+  <section class="other-projects">
+    <div class="other-projects-inner">
+      <h3>Other Projects</h3>
+      <div class="other-grid">
+        <a class="other-card" href="cic.html">
+          <img src="../assets/case-studies/cic/teaser.png" alt="CIC - AI Recipe & Image Generator">
+          <div class="other-overlay">
+            <span class="other-cat">AI Recipe Generator</span>
+            <h4 class="other-title">CIC</h4>
+          </div>
+        </a>
+        <a class="other-card" href="backende.html">
+          <img src="../assets/case-studies/backen/teaser.png" alt="Backen.de">
+          <div class="other-overlay">
+            <span class="other-cat">Recipe Platform</span>
+            <h4 class="other-title">backen.de</h4>
+          </div>
+        </a>
+        <a class="other-card" href="gh-go.html">
+          <img src="../assets/case-studies/ghgo/teaser.png" alt="Getränke Hoffmann - Loyalty App">
+          <div class="other-overlay">
+            <span class="other-cat">Loyalty App</span>
+            <h4 class="other-title">Getränke Hoffmann</h4>
+          </div>
+        </a>
+        <a class="other-card" href="biteme.html">
+          <img src="../assets/case-studies/biteme/teaser.png" alt="BiteMe.">
+          <div class="other-overlay">
+            <span class="other-cat">Brand Builder for Creators</span>
+            <h4 class="other-title">BiteMe.</h4>
+          </div>
+        </a>
+        <a class="other-card" href="speedy-ramen.html">
+          <img src="../assets/case-studies/speedy-ramen/teaser.png" alt="Speedy Ramen">
+          <div class="other-overlay">
+            <span class="other-cat">SaaS Ordering System</span>
+            <h4 class="other-title">Speedy Ramen</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY FOOTER (PREV / NEXT) -->
+  <footer class="cs-footer">
+    <a class="cs-nav-link prev" href="speedy-ramen.html">← Previous</a>
+    <a class="back-top" href="#top">BACK ↑ TOP</a>
+    <a class="cs-nav-link next" href="cic.html">Next →</a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
