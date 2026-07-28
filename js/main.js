@@ -5,23 +5,26 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Subtle parallax drift on visual case study images
-const parallaxContainers = document.querySelectorAll('.cs-visual-case');
-if (parallaxContainers.length) {
-  const range = 40; // total px of drift across the full scroll of each image
-  const updateParallax = () => {
-    parallaxContainers.forEach(container => {
-      const img = container.querySelector('.cs-visual-case-img');
-      if (!img) return;
-      const rect = container.getBoundingClientRect();
-      const total = rect.height + window.innerHeight;
-      const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / total));
-      const offset = (progress - 0.5) * range;
-      img.style.transform = `scale(1.04) translateY(${offset}px)`;
+// Stagger .tag fade-ups line by line, based on where they actually wrap
+const tagList = document.querySelectorAll('.tags .tag');
+if (tagList.length) {
+  const staggerTagsByLine = () => {
+    let lastTop = null, lineIndex = -1;
+    tagList.forEach(tag => {
+      const top = tag.offsetTop;
+      if (lastTop === null || Math.abs(top - lastTop) > 4) {
+        lineIndex++;
+        lastTop = top;
+      }
+      tag.style.transitionDelay = `${lineIndex * 0.12}s`;
     });
   };
-  window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
-  updateParallax();
+  staggerTagsByLine();
+  window.addEventListener('resize', staggerTagsByLine);
+  // Recompute once webfonts finish loading — the initial run happens against
+  // fallback-font metrics, and the swap to Poppins can reflow which line a
+  // borderline tag lands on without a resize event firing.
+  document.fonts?.ready.then(staggerTagsByLine);
 }
 
 // Mobile nav toggle
