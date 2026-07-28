@@ -830,7 +830,7 @@ a { text-decoration: none; }
 }
 
 .cs-section h2 {
-  font-size: clamp(3rem, 7.2vw, 6rem);
+  font-size: clamp(4.5rem, 10.8vw, 9rem);
   font-weight: 900;
   color: var(--purple);
   text-align: center;
@@ -1247,7 +1247,7 @@ a { text-decoration: none; }
 .cs-impact-inner { max-width: var(--max-w); margin: 0 auto; }
 
 .cs-impact h2 {
-  font-size: clamp(3rem, 7.2vw, 6rem);
+  font-size: clamp(4.5rem, 10.8vw, 9rem);
   font-weight: 900;
   color: var(--purple);
   text-align: center;
@@ -1838,7 +1838,7 @@ a { text-decoration: none; }
 .am-kpis-inner, .am-languages-inner, .am-toolkit-inner { max-width: var(--max-w); margin: 0 auto; }
 
 .am-kpis h2, .am-languages h2, .am-toolkit h2 {
-  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-size: clamp(4.125rem, 9vw, 7.5rem);
   font-weight: 900;
   color: var(--purple-dark);
   text-align: center;
@@ -1930,7 +1930,8 @@ a { text-decoration: none; }
 
 .am-tool-item p {
   font-family: 'Courier New', Courier, monospace;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 400;
   color: var(--purple-dark);
   max-width: 100%;
   white-space: nowrap;
