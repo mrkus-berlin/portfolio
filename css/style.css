@@ -8,6 +8,7 @@
   --white: #ffffff;
   --muted: rgba(98, 68, 228, 0.35);
   --font: 'Poppins', sans-serif;
+  --font-mono: 'Sometype Mono', monospace;
   --nav-h: 72px;
   --max-w: 1280px;
 }
@@ -145,7 +146,6 @@ a { text-decoration: none; }
   font-weight: 500;
   line-height: 1.3;
   color: var(--purple-dark);
-  max-width: 960px;
 }
 
 /* ─── SKILLS ─────────────────────────────────────── */
@@ -183,6 +183,9 @@ a { text-decoration: none; }
 
 .tag:hover { background: rgba(255,255,255,0.12); }
 
+/* .fade-up's transition shorthand would otherwise clobber the hover background transition above. */
+.tag.fade-up { transition: opacity 0.65s ease, transform 0.65s ease, background 0.2s; }
+
 /* ─── CASE STUDIES ───────────────────────────────── */
 .case-grid {
   display: grid;
@@ -194,6 +197,10 @@ a { text-decoration: none; }
   display: block;
   overflow: hidden;
   aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 1200px) {
+  .case-card { aspect-ratio: 40 / 21; }
 }
 
 .case-card img {
@@ -261,6 +268,7 @@ a { text-decoration: none; }
 }
 
 .section-sub {
+  font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 500;
   color: var(--purple);
@@ -268,13 +276,17 @@ a { text-decoration: none; }
 }
 
 .logos-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 160px));
   justify-content: center;
+  justify-items: center;
   align-items: center;
   gap: 36px 56px;
-  max-width: 880px;
   margin: 0 auto;
+}
+
+@media (min-width: 901px) {
+  .logos-grid { column-gap: 28px; }
 }
 
 .logos-grid img {
@@ -296,7 +308,7 @@ a { text-decoration: none; }
 }
 
 .footer-email {
-  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  font-size: clamp(1.12rem, 2.88vw, 2.08rem);
   font-weight: 600;
   color: white;
   transition: opacity 0.2s;
@@ -314,9 +326,31 @@ a { text-decoration: none; }
 
 .back-top:hover { color: white; }
 
-.footer-copy {
+.footer-quote {
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  display: inline-block;
+}
+
+.footer-quote:hover {
+  color: var(--yellow);
+  animation: footer-quote-wiggle 0.4s ease;
+}
+
+@keyframes footer-quote-wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1.5deg); }
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
 }
 
 /* ─── ABOUT PAGE ─────────────────────────────────── */
@@ -760,6 +794,36 @@ a { text-decoration: none; }
   background: var(--cream);
 }
 
+/* Tighten the gap between Process and Product specifically, without touching
+   the general section padding used everywhere else (Impact, Learnings, etc). */
+#process { padding-bottom: 24px; }
+#product { padding-top: 24px; }
+
+/* Design System's Product section has no content of its own besides the
+   heading — the showcase blocks sit right after it — so it needs its own,
+   much tighter bottom padding rather than the shared 96px. */
+.cs-section--empty { padding-bottom: 24px; }
+#product.cs-section--empty h2 { margin-bottom: 0; }
+
+/* Pull the block that follows the full-bleed PDF/showcase visuals up, since
+   the source images carry a lot of trailing empty/shadow space of their own. */
+.cs-visual-case + #impact,
+.cs-visual-case + #learnings {
+  margin-top: -80px;
+  position: relative;
+}
+
+.cs-showcase.big-mockups + .cs-showcase.big-mockups { margin-top: -200px; }
+
+.cs-showcase.big-mockups + #impact {
+  margin-top: -220px;
+  position: relative;
+}
+
+/* BiteMe / Speedy Ramen: Learnings is a title + single paragraph, not a grid
+   of cards like Impact — it doesn't need the same large heading gap. */
+#learnings h2 { margin-bottom: 24px; }
+
 .cs-section-inner {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -779,6 +843,8 @@ a { text-decoration: none; }
   gap: 40px;
   margin-bottom: 80px;
 }
+
+.cs-process-wireframe { width: 70% !important; margin: 0 auto; }
 
 .cs-feature img {
   width: 100%;
@@ -986,13 +1052,9 @@ a { text-decoration: none; }
 .cs-visual-case {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  overflow: hidden;
 }
 
-.cs-visual-case-img { display: block; width: 100%; transform: scale(1.04); }
-
-/* Parallax drift is applied via inline transform in JS (which includes the scale above) — let opacity-only fade handle the entrance. */
-.cs-visual-case-img.fade-up { transition: opacity 0.65s ease; }
+.cs-visual-case-img { display: block; width: 100%; }
 
 .cs-vc-block {
   position: relative;
@@ -1211,7 +1273,12 @@ a { text-decoration: none; }
   font-weight: 800;
   color: white;
   margin-bottom: 12px;
+  min-height: 1.5em;
+  display: flex;
+  align-items: center;
 }
+
+.impact-icon { height: 0.7em; width: auto; display: block; }
 
 .impact-card .impact-label {
   font-size: 0.95rem;
@@ -1268,9 +1335,12 @@ a { text-decoration: none; }
   color: rgba(17,17,17,0.55);
 }
 
+.cs-compare-col { text-align: center; }
+
 .cs-compare-flow {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 12px;
   font-size: 1.05rem;
@@ -1667,7 +1737,7 @@ a { text-decoration: none; }
   display: block;
   width: 100%;
   max-width: 760px;
-  border-radius: 2px;
+  border-radius: 8px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.35);
 }
 
@@ -1677,48 +1747,69 @@ a { text-decoration: none; }
 }
 
 /* ─── ABOUT ME / SKILLS ─── */
+/* Full-bleed purple background, decoupled from the content max-width below
+   (background and content-width used to be on the same element, which meant
+   the purple never reached the viewport edges on screens wider than 1280px). */
 .am-hero {
   background: var(--purple);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   padding: 96px 48px;
   display: flex;
+  justify-content: center;
+}
+
+/* Photo + text-content sit as one row, centered as a block within the
+   full-bleed background above. */
+.am-hero-container {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 64px;
+  gap: 28px;
   max-width: var(--max-w);
-  margin: 0 auto;
+  width: 100%;
 }
 
 .am-photo {
   flex: 0 0 auto;
-  width: 260px;
-  height: 260px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
+  display: block;
 }
 
-.am-hero-text { flex: 1; color: white; }
+/* Name+tagline and bio grouped together as a single column beside the photo. */
+.am-hero-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  max-width: 680px;
+  color: white;
+}
 
-.am-hero-text h1 {
+.am-hero-name h1 {
   font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 800;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .am-tagline {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
-  margin-bottom: 28px;
 }
 
 .am-bio {
+  margin-top: 16px;
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(255,255,255,0.9);
-  max-width: 680px;
 }
 
 .am-bio strong { font-weight: 700; }
 
 .am-headline { background: var(--cream); padding: 80px 48px; text-align: center; }
-.am-headline-svg { width: auto; height: auto; max-width: 100%; max-height: 80vh; }
+.am-headline-svg { display: block; width: auto; height: auto; max-width: min(100%, 1280px); max-height: 80vh; margin: 0 auto; }
 
 .am-contribution { background: var(--cream); padding: 0 48px 96px; }
 .am-contribution-inner { max-width: var(--max-w); margin: 0 auto; }
@@ -1741,7 +1832,7 @@ a { text-decoration: none; }
 
 .am-list-text { font-size: 1.15rem; color: var(--dark); }
 
-.am-divider { border: none; border-top: 1px solid var(--muted); max-width: var(--max-w); margin: 0 auto; }
+.am-divider { border: none; border-top: 1px solid var(--muted); width: calc(100% - 96px); max-width: var(--max-w); margin: 0 auto; }
 
 .am-kpis, .am-languages, .am-toolkit { background: var(--cream); padding: 96px 48px; }
 .am-kpis-inner, .am-languages-inner, .am-toolkit-inner { max-width: var(--max-w); margin: 0 auto; }
@@ -1848,10 +1939,10 @@ a { text-decoration: none; }
 }
 
 @media (max-width: 900px) {
-  .am-hero { flex-direction: column; text-align: center; padding: 64px 24px; gap: 32px; }
-  .am-hero-text { text-align: center; }
-  .am-bio { max-width: none; }
-  .am-photo { width: 220px; height: 220px; }
+  .am-hero { padding: 64px 24px; }
+  .am-hero-container { flex-direction: column; gap: 20px; }
+  .am-hero-text-content { text-align: center; max-width: none; }
+  .am-photo { width: 160px; height: 160px; }
   .am-headline { padding: 48px 24px; }
   .am-contribution { padding: 0 24px 64px; }
   .am-kpis, .am-languages, .am-toolkit { padding: 64px 24px; }
